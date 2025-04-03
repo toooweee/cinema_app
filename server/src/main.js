@@ -3,6 +3,7 @@ dotenv.config();
 import express from "express";
 import cors from "cors";
 import errorMiddleware from "./middlewares/error.middleware.js";
+import router from "./routes/index.js";
 
 async function main() {
   const app = express();
@@ -10,6 +11,8 @@ async function main() {
 
   app.use(cors());
   app.use(express.json());
+
+  app.use("/api", router);
 
   app.use(errorMiddleware);
 
